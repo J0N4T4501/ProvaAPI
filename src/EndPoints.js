@@ -1,5 +1,5 @@
 
-import  {dobro,somar,media,temp, corsimcornao, ingresso, freqCaracter, tabuada} from './Services.js'
+import  {dobro,somar,media,temp, corsimcornao, ingresso, freqCaracter, tabuada, maiorNumero} from './Services.js'
 
 import { Router } from 'express'
 const server = Router();
@@ -108,8 +108,17 @@ server.post('/tabuada', (req,resp) =>{
     const x = tabuada(numero);
 
     resp.send({
-        tabuada:x
+        tabuada: x
     });
+})
+
+server.get('/maiorNumero/:numeros', (req,resp) =>{
+    const numeros = req.params.numeros;
+    const x = maiorNumero(numeros);
+
+    resp.send({
+        maiorNumero: x
+    })
 })
 
 export default server;

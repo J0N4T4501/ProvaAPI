@@ -58,6 +58,28 @@ export function freqCaracter(texto, caracter){
     return a;
 }
 
+export function maiorNumero(numeros){
+    let a = -1;
+    for ( let item of numeros)
+    {
+        if(item > a)
+        {
+            a = item;
+        }
+    }
+    let b = -1;
+    let c = a;
+    for ( let item of numeros)
+    {
+        if(item > b && item != a)
+        {
+            c = item;
+        }
+    }
+
+    return c;
+}
+
 
 
 
