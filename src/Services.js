@@ -23,7 +23,7 @@ export function tabuada(a){
 }
 
 export function corsimcornao(cor){
-    let a = cor == 'amarelo' || cor == 'azul' || cor == 'vermelho';
+    let a = cor == "amarelo" || cor == "azul" || cor == "vermelho";
     return a;
 }
 
@@ -47,26 +47,18 @@ export function ingresso(dia, inteira, meia, nacionalidade){
     return a + b;
 }
 
-export function FreqCaracter(texto, caracter){
+export function freqCaracter(texto, caracter){
     let a = 0;
 
     for(let cont = 0; cont < texto.length; cont++){
-        if( texto[cont].toUpperCase() = caracter.toUpperCase())
-            a++;
+        if( texto[cont].toUpperCase() == caracter.toUpperCase()){
+            a++;            
+        }
     }
     return a;
 }
 
-export function tabuada(numero){
-    let a =[0,0,0,0,0,0,0,0,0,0,0];
-    let soma = 0;
-    for(let i = 0; i <= 10; i++) {
-        let s = numero * soma;
-        a[i] = s;
-        soma++;
-    }
-    return a;
-}
+
 
 
 

@@ -1,5 +1,5 @@
 
-import  {dobro,somar,media,temp, corsimcornao, ingresso, FreqCaracter, tabuada} from './Services.js'
+import  {dobro,somar,media,temp, corsimcornao, ingresso, freqCaracter, tabuada} from './Services.js'
 
 import { Router } from 'express'
 const server = Router();
@@ -93,13 +93,13 @@ server.post('/ingresso', (req,resp)=>{
     });
 })
 
-server.get('/FreqCaracter/:texto/:caracter', (req,resp) =>{
+server.get('/freqCaracter/:texto/:caracter', (req,resp) =>{
     const texto = req.params.texto;
     const caracter = req.params.caracter;
-    const x = FreqCaracter(texto, caracter);
+    const x = freqCaracter(texto, caracter);
 
     resp.send({
-        FreqCaracter: x
+        freqCaracter: x
     });
 })
 
