@@ -10,7 +10,8 @@ server.get('/ping', (req,resp) =>{
     resp.send('pong');
 })
 
-server.get('/dobro/:numero' ,(req,resp)=>{
+server.get('/dia2/dobro/:numero' ,(req,resp)=>{
+    try{
     const numero = Number(req.params.numero);
     const d = dobro(numero)
     
@@ -18,20 +19,33 @@ server.get('/dobro/:numero' ,(req,resp)=>{
     resp.send({
         dobro: d
     }); 
+}
+catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
 
 })
 
-server.get('/somar', (req,resp) => {
-    
+server.get('/dia2/somar', (req,resp) => {
+    try{
     let {a,b} =req.body;
 
     const d = somar(a,b)
     resp.send({
         soma:d
     });
+}catch(err){
+   
+    resp.status(404).send({
+            erro: err.message
+        })
+    
+}
 })
 
-server.post('/somar', (req,resp)=> {
+server.post('/dia2//somar', (req,resp)=> {
     try{
         const{valores:{a,b}} = req.body
 
@@ -48,34 +62,53 @@ server.post('/somar', (req,resp)=> {
 }
 })
 
-server.post('/temp',(req,resp)=>{
+server.post('/dia2/temp',(req,resp)=>{
+    try{
     const a = req.body;
 
     const d = temp (a);
     resp.send({
         temp:d
     })
+}catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
 })
 
-server.get('/temp/:numero' ,(req,resp)=>{
+server.get('/dia2/temp/:numero' ,(req,resp)=>{
+    try{
     const numero = Number(req.params.numero);
     const d = temp(numero)
 
     resp.send({
         temp: d
     }); 
+}catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
 
 })
 
-server.post('/media', (req,resp)=>{
+server.post('/dia2/media', (req,resp)=>{
+    try{
     const {a, b, c} = req.body;
     
     const x = media(a, b, c);
     resp.send({
         media: x
     });
+}catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
 })
-server.get('/corsimcornao/:cor', (req,resp)=>{
+server.get('/dia2/corsimcornao/:cor', (req,resp)=>{
+    try{
      const cor = req.params.cor;
      const x = corsimcornao(cor);
 
@@ -83,28 +116,46 @@ server.get('/corsimcornao/:cor', (req,resp)=>{
          corsimcornao: x
      });
 
+    }catch(err){
+        resp.status(404).send({
+            erro: err.message
+        })
+    }
+
 })
-server.post('/ingresso', (req,resp)=>{
+server.post('/dia2/ingresso', (req,resp)=>{
+    try{
     const {dia:dia, inteira:inteira, meia:meia, nacionalidade:nacionalidade} = req.body;
-    const x = ingresso(String(dia), inteira, meia, String(nacionalidade));
+    const total = ingresso(String(dia), inteira, meia, String(nacionalidade));
 
     resp.send({
-        ingresso: x
+        total: total
     });
+}catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
 })
 
-server.get('/freqCaracter/:texto/:caracter', (req,resp) =>{
+server.get('/dia2/freqCaracter/:texto/:caracter', (req,resp) =>{
+    try{
     const texto = req.params.texto;
     const caracter = req.params.caracter;
-    const x = freqCaracter(texto, caracter);
+    const freq = freqCaracter(texto, caracter);
 
     resp.send({
-        freqCaracter: x
+        freq: freq
     });
+}catch(err){
+    resp.status(404).send({
+        erro:err.message
+    })
+}
 })
 
-server.post('/tabuada', (req,resp) =>{
-    const numero = req.body;
+server.get('/tabuada', (req,resp) =>{
+    const numero = req.params.numero;
     const x = tabuada(numero);
 
     resp.send({
@@ -112,8 +163,8 @@ server.post('/tabuada', (req,resp) =>{
     });
 })
 
-server.get('/maiorNumero/:numeros', (req,resp) =>{
-    const numeros = req.params.numeros;
+server.post('/dia2/maiorNumero/', (req,resp) =>{
+    const numeros = req.body;
     const x = maiorNumero(numeros);
 
     resp.send({
